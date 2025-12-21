@@ -25,3 +25,8 @@ npx expo install react-native-screens react-native-safe-area-context
 - Созданы 5 страниц
 - Создан Header
 - Создан navigate
+
+# commit 4 (21.12)
+
+- Создан сам Reader
+- Создана возможность загружать .epub файлы

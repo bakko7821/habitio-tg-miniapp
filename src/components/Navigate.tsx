@@ -38,14 +38,14 @@ export function Navigate() {
         style={[styles.button, { backgroundColor: buttonBg('Favorites') }]}
         onPress={() => navigation.navigate('Favorites')}
       >
-        <FavoritesIcon width={48} height={48} fill={iconColor('Favorites')} />
+        <FavoritesIcon width={36} height={36} fill={iconColor('Favorites')} />
       </Pressable>
 
       <Pressable
         style={[styles.button, { backgroundColor: buttonBg('ReadingLater') }]}
         onPress={() => navigation.navigate('ReadingLater')}
       >
-        <ReadLaterIcon width={48} height={48} fill={iconColor('ReadingLater')} />
+        <ReadLaterIcon width={36} height={36} fill={iconColor('ReadingLater')} />
       </Pressable>
 
       <Pressable
@@ -53,8 +53,8 @@ export function Navigate() {
         onPress={() => navigation.navigate('Library')}
       >
         <OpenBookIcon
-          width={56}
-          height={56}
+          width={48}
+          height={48}
           fill={iconColor('Library')}
         />
       </Pressable>
@@ -63,14 +63,14 @@ export function Navigate() {
         style={[styles.button, { backgroundColor: buttonBg('ReadingNow') }]}
         onPress={() => navigation.navigate('ReadingNow')}
       >
-        <NoteIcon width={48} height={48} fill={iconColor('ReadingNow')} />
+        <NoteIcon width={36} height={36} fill={iconColor('ReadingNow')} />
       </Pressable>
 
       <Pressable
         style={[styles.button, { backgroundColor: buttonBg('Charts') }]}
         onPress={() => navigation.navigate('Charts')}
       >
-        <ChartIcon width={48} height={48} fill={iconColor('Charts')} />
+        <ChartIcon width={36} height={36} fill={iconColor('Charts')} />
       </Pressable>
     </View>
   );
