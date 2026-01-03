@@ -1,2 +1,45 @@
 @use './variables' as *;
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $background-color;
+    width: 99vw;
+    height: 99vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+}
+
+#root {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 16px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $background-card-color;
+}

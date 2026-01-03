@@ -1,16 +1,16 @@
 import { Outlet } from "react-router-dom";
-import { Navigate } from "../Navigate/Navigate";
-import useAuthGuard from "../../hooks/useAuthGuard";
+import { Navigation } from "../Navigate/Navigation.js";
 
 export default function MainLayout() {
-    useAuthGuard()
+    // useAuthGuard()
     
     return (
         <>
-            <Navigate />
+            <h1>Habit track</h1>
             <main>
                 <Outlet />
             </main>
+            <Navigation/>
         </>
     )
 }

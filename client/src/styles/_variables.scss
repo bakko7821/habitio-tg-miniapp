@@ -1,14 +1,22 @@
 :root {
-  --background-color: #0F0F10;
-  --background-card-color: #1A1B1E;
-  --background-card-hover-color: #232528;
-  --main-color: #6AA8F9;
-  --main-color-hover: #5B94E0;
-  --red: #780000;
-  --red-hover: #B56161;
-  --main-text-color: #FFFFFF;
-  --second-text-color: #818181;
-  --second-text-color-hover: #6A6A6A;
+  --background-color: #FFFFFF;
+  --background-card-color: #F6F7F9;
+  --main-text-color: #1a1a1a;
+  --second-text-color: #5F6368;
+  --main-color: #2563EB;
+  --main-color-hover: #1D4ED8;
+  --disable-color: #D1D5DB;
+
+  // RAINBOW COLOR
+
+  --red: #EF4444;
+  --orange: #F97316;
+  --yellow: #EAB308;
+  --green: #22C55E;
+  --sky: #38BDF8;
+  --blue: #3B82F6;
+  --purple: #8B5CF6;
+  --pink: #EC4899;
 
   --rem0_625: clamp(0.5rem, 2vw, 0.625rem);
   --rem0_875: clamp(0.625rem, 2vw, 0.875rem);
@@ -19,21 +27,42 @@
 
 [data-theme="light"] {
   --background-color: #FFFFFF;
-  --background-card-color: #F0F0F0;
-  --background-card-hover-color: #E0E0E0;
-  --main-text-color: #000000;
+  --background-card-color: #F6F7F9;
+  --main-text-color: #1a1a1a;
+  --second-text-color: #5F6368;
+  --main-color: #2563EB;
+  --main-color-hover: #1D4ED8;
+  --disable-color: #D1D5DB;
+}
+
+[data-theme="dark"] {
+  --background-color: #1E1E1E;
+  --background-card-color: #262626;
+  --main-text-color: #EDEDED;
+  --second-text-color: #A1A1AA;
+  --main-color: #3B82F6;
+  --main-color-hover: #60A5FA;
+  --disable-color: #52525B;
 }
 
 $background-color: var(--background-color);
 $background-card-color: var(--background-card-color);
-$background-card-hover-color: var(--background-card-hover-color);
-$main-color: var(--main-color);
-$main-color-hover: var(--main-color-hover);
-$red: var(--red);
-$red-hover: var(--red-hover);
 $main-text-color: var(--main-text-color);
 $second-text-color: var(--second-text-color);
-$second-text-color-hover: var(--second-text-color-hover);
+$main-color: var(--main-color);
+$main-color-hover: var(--main-color-hover);
+$disable-color: var(--disable-color);
+
+// RAINBOW COLOR
+
+$red: var(--red);
+$orange: var(--orange);
+$yellow: var(--yellow);
+$green: var(--green);
+$sky: var(--sky);
+$blue: var(--blue);
+$purple: var(--purple);
+$pink: var(--pink);
 
 $rem0_625: clamp(0.5rem, 2vw, 0.625rem);
 $rem0_875: clamp(0.625rem, 2vw, 0.875rem);
