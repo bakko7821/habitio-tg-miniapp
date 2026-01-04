@@ -16,6 +16,7 @@ declare global {
           };
           initDataUnsafe?: {
             user?: {
+              photo_url?: string;
               id: number;
               first_name: string;
               last_name?: string;

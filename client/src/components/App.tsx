@@ -6,8 +6,14 @@ import { TodoPage } from "../pages/TodoPage"
 import { PomodoroPage } from "../pages/PomodoroPage"
 import { ChartPage } from "../pages/ChartPage"
 import { Layout } from "../layout/Layout"
+import { useEffect } from "react"
 
 function App() {
+  
+  useEffect(() => {
+    window.Telegram?.WebApp?.ready()
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>

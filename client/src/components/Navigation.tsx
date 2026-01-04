@@ -6,7 +6,8 @@ import {
   PomodoroIcon,
   ProfileIcon,
 } from "../assets/icons"
-import { accentTextColor, hintColor, secondaryBgColor } from "../types/variables"
+import { accentTextColor, hintColor, secondaryBgColor} from "../types/variables"
+import { useTelegram } from "../hooks/useTelegram"
 
 const linkClass = "p-2 transition"
 
@@ -15,30 +16,38 @@ const getStyle = ({ isActive }: { isActive: boolean }) => ({
 })
 
 export const Navigation = () => {
-  return (
-    <nav
-      style={{ backgroundColor: secondaryBgColor }}
-      className="w-full rounded-2xl flex justify-between px-3 py-2"
-    >
-      <NavLink to="/habit" style={getStyle} className={linkClass}>
-        <HabitIcon />
-      </NavLink>
+    const { user } = useTelegram()
 
-      <NavLink to="/todo" style={getStyle} className={linkClass}>
-        <NoteIcon />
-      </NavLink>
+    return (
+        <nav
+            style={{ backgroundColor: secondaryBgColor }}
+            className="w-full rounded-2xl flex justify-between px-3 py-2"
+        >
+            <NavLink to="/habit" style={getStyle} className={linkClass}>
+            <HabitIcon />
+            </NavLink>
 
-      <NavLink to="/pomodoro" style={getStyle} className={linkClass}>
-        <PomodoroIcon />
-      </NavLink>
+            <NavLink to="/todo" style={getStyle} className={linkClass}>
+            <NoteIcon />
+            </NavLink>
 
-      <NavLink to="/chart" style={getStyle} className={linkClass}>
-        <ChartIcon />
-      </NavLink>
+            <NavLink to="/pomodoro" style={getStyle} className={linkClass}>
+            <PomodoroIcon />
+            </NavLink>
 
-      <NavLink to="/profile" style={getStyle} className={linkClass}>
-        <ProfileIcon />
-      </NavLink>
-    </nav>
-  )
+            <NavLink to="/chart" style={getStyle} className={linkClass}>
+            <ChartIcon />
+            </NavLink>
+
+            <NavLink to="/profile" style={getStyle} className={linkClass}>
+            {user?.photo_url ? (
+                <img
+                    src={user.photo_url}
+                    alt="Profile"
+                    className="w-6 h-6 rounded-full object-cover"
+                />
+            ) : (<ProfileIcon />)}
+            </NavLink>
+        </nav>
+    )
 }
