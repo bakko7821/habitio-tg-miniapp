@@ -7,12 +7,19 @@ import { PomodoroPage } from "../pages/PomodoroPage"
 import { ChartPage } from "../pages/ChartPage"
 import { Layout } from "../layout/Layout"
 import { useEffect } from "react"
+import { telegramAuth } from "../api/telegramAuth"
 
 function App() {
   
   useEffect(() => {
-    window.Telegram?.WebApp?.ready()
-  }, [])
+    telegramAuth()
+      .then((user) => {
+        console.log('Authorized user:', user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <BrowserRouter>

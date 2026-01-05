@@ -42,9 +42,9 @@ export const Navigation = () => {
             <NavLink to="/profile" style={getStyle} className={linkClass}>
             {user?.photo_url ? (
                 <img
-                    src={user.photo_url}
+                    src='client/src/assets/17de3c6552c97658bb05e6292e5cc674.jpg'
                     alt="Profile"
-                    className="w-6 h-6 rounded-full object-cover"
+                    className="w-12 h-12 rounded-full object-cover"
                 />
             ) : (<ProfileIcon />)}
             </NavLink>

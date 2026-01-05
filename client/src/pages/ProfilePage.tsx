@@ -6,7 +6,7 @@ export const ProfilePage = () => {
     return(
         <>
             <p>{user?.first_name || 'Unknow'}</p>
-            <p>{user?.last_name || 'Unknow'}</p>
+            <p>{user?.last_name || ''}</p>
             <p>@{user?.username || 'Unknow'}</p>
         </>
     )

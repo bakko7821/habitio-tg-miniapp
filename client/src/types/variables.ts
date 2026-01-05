@@ -1,4 +1,3 @@
-export const user = window.Telegram?.WebApp?.initDataUnsafe?.user;
 export const theme = window.Telegram?.WebApp?.themeParams;
 
 export const bgColor = theme?.bg_color || '#FFFFFF';
