@@ -17,7 +17,7 @@ function App() {
         console.log('Authorized user:', user);
       })
       .catch((err) => {
-        console.error(err);
+        console.warn(err);
       });
   }, []);
 

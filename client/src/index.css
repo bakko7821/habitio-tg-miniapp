@@ -5,12 +5,61 @@
   --font-sf: "Inter", sans-serif;
 }
 
+:root {
+  --bg-color: #FFFFFF;
+  --secondary-bg-color: #F6F7F9;
+  --text-color: #1A1A1A;
+  --button-color: #2563EB;
+  --hint-color: #5F6368;
+}
+
 nav a svg {
-    width: 48px;
-    height: 48px;
+  width: 48px;
+  height: 48px;
+  transition: all 0.5s;
 }
 
 .plug {
-    width: 100%;
-    height: 1px;
+  width: 100%;
+  height: 1px;
 }
+
+.nav-link {
+  color: var(--hint-color);
+}
+
+.nav-link-active {
+  color: var(--button-color);
+  animation: ring 0.5s ease-out;
+}
+
+.nav-link-active svg {
+  transform: rotate(20deg);
+}
+
+@keyframes ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 136, 255, 0.6);
+    transform: rotate(0deg);
+  }
+  70% {
+    box-shadow: 0 0 0 4px rgba(0, 136, 255, 0.2);;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 136, 255, 0);
+    transform: rotate(720deg);
+  }
+}
+
+.arrow-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.arrow-button-active svg {
+  width: 24px;
+  height: 24px;
+  transform: rotate(180deg);
+}
+
+
