@@ -55,6 +55,12 @@ svg {
   height: 24px;
 }
 
+input, select {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
 .arrow-button-active svg {
   transform: rotate(180deg);
 }
@@ -64,5 +70,74 @@ svg {
   height: 28px;
 }
 
+/* сам контейнер по умолчанию */
+.floating-input {
+  border: 2px solid var(--hint-color);
+  padding: 12px;
+  border-radius: 16px;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
+.floating-input input,
+.floating-input select {
+  width: 100%;
+}
+
+/* когда внутри input в фокусе или есть текст */
+.floating-input:focus-within {
+  border-color: var(--button-color);
+  box-shadow: 0 0 0 3px rgba(var(--button-color-rgb), 0.2)
+}
+
+/* Плавающий label */
+.floating-input label {
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background-color: var(--bg-color);
+  padding: 0;
+  pointer-events: none;
+}
+
+.floating-input input:focus + label,
+.floating-input input:not(:placeholder-shown) + label,
+.floating-input select:focus + label,
+.floating-input select:not(:placeholder-shown) + label {
+  top: -12px;
+  left: 12px;
+  padding: 0 8px;
+  font-size: 0.75rem;
+  color: var(--button-color);
+}
+
+.floating-input input:not(:focus) + label,
+.floating-input select:not(:focus) + label {
+  color: var(--text-color)
+}
+
+/* Скрываем placeholder, когда есть текст или фокус */
+.floating-input input::placeholder {
+  opacity: 0;
+}
+
+.floating-input input[type='color'] {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.floating-input input[type='color']:focus + label,
+.floating-input input[type='color']:not(:placeholder-shown) + label {
+  top: -12px;
+  left: 6px;
+  padding: 0 4px;
+  font-size: 0.75rem;
+  color: var(--button-color);
+}
+
+.floating-input input[type='color']:not(:focus) + label {
+  color: var(--text-color)
+}
 

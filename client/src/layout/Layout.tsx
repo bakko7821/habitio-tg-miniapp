@@ -6,6 +6,7 @@ import { bgColor, textColor } from "../types/variables"
 
 const titlesMap: Record<string, string> = {
   "/habit": "Habit Track",
+  "/new-habit": "New Habit",
   "/todo": "To-do Track",
   "/pomodoro": "Pomodoro",
   "/chart": "Chart",

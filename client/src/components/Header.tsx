@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom"
 import { AddIcon } from "../assets/icons"
 import type { HeaderProps } from "../types/types"
 import { textColor } from "../types/variables"
 
 export const Header = ({title, showHabitButton }: HeaderProps) => {
+    const navigate = useNavigate()
+
     function createNewHabbit() {
         console.log('создание новой привычки')
+        navigate('/new-habit')
     }
 
     return (

@@ -8,6 +8,7 @@ import { ChartPage } from "../pages/ChartPage"
 import { Layout } from "../layout/Layout"
 import { useEffect } from "react"
 import { telegramAuth } from "../api/telegramAuth"
+import { CreateNewHabitPage } from "../pages/CreateNewHabitPage"
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Navigate to="/habit" />} />
           <Route path="/habit" element={<HabitPage />} />
+          <Route path="/new-habit" element={<CreateNewHabitPage />} />
           <Route path="/todo" element={<TodoPage />} />
           <Route path="/pomodoro" element={<PomodoroPage />} />
           <Route path="/chart" element={<ChartPage />} />
