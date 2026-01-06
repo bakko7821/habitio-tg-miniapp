@@ -7,3 +7,4 @@ export const textColor = theme?.text_color || '#1A1A1A';
 export const buttonColor = theme?.button_color || '#2563EB';
 export const linkColor = theme?.link_color || '#2563EB';
 export const hintColor = theme?.hint_color || '#5F6368';
+export const disableColor = '#D1D5DB'

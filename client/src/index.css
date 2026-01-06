@@ -30,7 +30,7 @@ nav a svg {
 
 .nav-link-active {
   color: var(--button-color);
-  animation: ring 0.5s ease-out;
+  animation: ring 0.4s ease-out;
 }
 
 .nav-link-active svg {
@@ -40,14 +40,13 @@ nav a svg {
 @keyframes ring {
   0% {
     box-shadow: 0 0 0 0 rgba(0, 136, 255, 0.6);
-    transform: rotate(0deg);
   }
   70% {
     box-shadow: 0 0 0 4px rgba(0, 136, 255, 0.2);;
+    transform: scale(1.1);
   }
   100% {
     box-shadow: 0 0 0 0 rgba(0, 136, 255, 0);
-    transform: rotate(720deg);
   }
 }
 
