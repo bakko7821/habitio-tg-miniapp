@@ -59,7 +59,7 @@ export const HabitPage = () => {
                                     <img 
                                         src={habit.icon.url} 
                                         alt="Icon" 
-                                        className="w-[28px] h-[28px]"
+                                        className="text-black w-[28px] h-[28px]"
                                     />
                                 </div>
 

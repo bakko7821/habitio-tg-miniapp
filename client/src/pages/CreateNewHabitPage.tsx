@@ -1,12 +1,15 @@
 import { useState } from "react"
 import { buttonColor, buttonTextColor } from "../types/variables"
 import { useNavigate } from "react-router-dom"
+import { iconsList } from "../utils/icons.links"
 
 export const CreateNewHabitPage = () => {
     const navigate = useNavigate()
 
     const [habitName, setHabitName] = useState('')
     const [habitColor, setHabitColor] = useState('')
+    const [habitIcon, setHabitIcon] = useState('')
+    const [habitIconLink, setHabitIconLink] = useState('')
     const [habitTime, setHabitTime] = useState('')
     const [habitNotes, setHabitNotes] = useState('')
 
@@ -63,6 +66,38 @@ export const CreateNewHabitPage = () => {
                             value={habitColor}
                             onChange={(e) => setHabitColor(e.target.value)}/>
                         <label htmlFor="color">Цвет <span>*</span></label>
+                    </div>
+                </div>
+                <div className="flex gap-4">
+                    <div className="floating-input">
+                        <select 
+                            required
+                            id="habit-icon">
+                            {/* <option value="everyday"></option>
+                            <option value="one-three-day">Раз в 3 дня</option>
+                            <option value="one-on-week">Раз в неделю</option> */}
+                            {iconsList.map((category) => (
+                                <div className="">
+                                    <p>{category.name}</p>
+                                    {category.icons.map((icon) => (
+                                        <option value={icon.id} key={icon.id}>
+                                            <img src={icon.url} alt="" className="w-[20px] h-[20px]"/>
+                                        </option>
+                                    ))}
+                                </div> 
+                            ))}
+                        </select>
+                        <label htmlFor="habit-type">Частота <span>*</span></label>
+                    </div>
+                    <div className="floating-input w-full">
+                        <input
+                            type="text" 
+                            name="iconLink" 
+                            id="iconLink"
+                            placeholder="Ссылка"
+                            value={habitIconLink}
+                            onChange={(e) => setHabitIconLink(e.target.value)}/>
+                        <label htmlFor="iconLink">Ссылка <span>*</span></label>
                     </div>
                 </div>
                 <div className="floating-input">

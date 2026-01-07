@@ -77,7 +77,7 @@ export const createHabit = async (req: Request, res: Response) => {
       // 3️⃣ Создаем 93 пустых лога (последняя дата = сегодня, остальные идут на 1 день назад)
       const logsData = []
       const today = new Date()
-      for (let i = 92; i >= 0; i--) {
+      for (let i = 121; i >= 0; i--) {
         const date = new Date(today)
         date.setDate(today.getDate() - i)
         logsData.push({
