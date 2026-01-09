@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { buttonColor, buttonTextColor } from "../types/variables"
 import { useNavigate } from "react-router-dom"
-import { IconsList } from "../components/IconsList"
+import { IconsModal } from "../components/Modal/IconsModal"
 import { QuetionIcon } from "../assets/icons"
+import { ColorsModal } from "../components/Modal/ColorsModal"
 
 export const CreateNewHabitPage = () => {
     const navigate = useNavigate()
@@ -11,33 +12,42 @@ export const CreateNewHabitPage = () => {
     const [habitColor, setHabitColor] = useState('')
     const [habitIcon, setHabitIcon] = useState<string | null>(null)
     const [isIconsOpen, setIsIconsOpen] = useState(false)
+    const [isColorsOpen, setIsColorsOpen] = useState(false)
     const [habitIconLink, setHabitIconLink] = useState('')
     const [habitTime, setHabitTime] = useState('')
     const [habitNotes, setHabitNotes] = useState('')
 
     const handleSubmitNewHabitForm = async (e: React.FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        if (!habitIcon && !habitIconLink) {
+            alert("Выберите иконку или вставьте ссылку на SVG");
+            return;
+        }
 
         const payload = {
             user_id: 1,
             name: habitName,
-            color: habitColor
-        }
+            color: habitColor,
+            icon_url: habitIconLink || habitIcon, // берём либо ссылку, либо выбранную иконку
+        };
 
         try {
             const res = await fetch("http://localhost:5000/api/habits/new-habit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
-            })
-            const data = await res.json()
-            console.log("Created habit:", data)
+            });
+
+            const data = await res.json();
+            console.log("Created habit:", data);
         } catch (err) {
-            console.error(err)
+            console.error(err);
         }
 
-        navigate("/habit")
-    }
+        navigate("/habit");
+    };
+
 
     return (
         <form 
@@ -58,16 +68,28 @@ export const CreateNewHabitPage = () => {
                             onChange={(e) => setHabitName(e.target.value)}/>
                         <label htmlFor="name">Название <span>*</span></label>
                     </div>
-                    <div className="floating-input">
-                        <input 
-                            required
-                            type="color" 
-                            name="color" 
-                            id="color"
-                            placeholder="Цвет"
-                            value={habitColor}
-                            onChange={(e) => setHabitColor(e.target.value)}/>
-                        <label htmlFor="color">Цвет <span>*</span></label>
+                    <div className="pickColorInput floating-input">
+                        <button
+                            type="button"
+                            name="pick-color"
+                            id="pick-color"
+                            style={{ backgroundColor: habitColor || '#EF4444'}}
+                            onClick={() => setIsColorsOpen(prev => !prev)}
+                            className="w-12 h-full rounded-sm"
+                        ></button>
+                        <label htmlFor="pick-color">Цвет <span>*</span></label>
+
+                        {isColorsOpen && (
+                            <ColorsModal 
+                                onSelect={(color) => {
+                                    setHabitColor(color)
+                                    setIsColorsOpen(false)
+                                }}
+                                onClose={
+                                    () => setIsColorsOpen(false)
+                                }
+                            />
+                        )}
                     </div>
                 </div>
                 <div className="flex items-end justify-center gap-4">
@@ -91,12 +113,15 @@ export const CreateNewHabitPage = () => {
                         <label htmlFor="pick-icon">Иконка <span>*</span></label>
 
                         {isIconsOpen && (
-                            <IconsList
-                            onSelect={(iconUrl) => {
-                                setHabitIcon(iconUrl)
-                                setHabitIconLink(iconUrl) // если нужно сразу в форму
-                                setIsIconsOpen(false)
-                            }}
+                            <IconsModal
+                                onSelect={(iconUrl) => {
+                                    setHabitIcon(iconUrl)
+                                    setHabitIconLink(iconUrl)
+                                    setIsIconsOpen(false)
+                                }}
+                                onClose={
+                                    () => setIsIconsOpen(false)
+                                }
                             />
                         )}
                         </div>

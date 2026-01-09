@@ -3,6 +3,16 @@ export interface HeaderProps {
     showHabitButton?: boolean
 }
 
+export interface IconsModalProps {
+  onSelect: (iconUrl: string) => void;
+  onClose: () => void;
+}
+
+export interface ColorsModalProps {
+  onSelect: (color: string) => void;
+  onClose: () => void;
+}
+
 // Habit interfaces
 
 export interface Habit {

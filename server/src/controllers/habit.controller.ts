@@ -54,50 +54,52 @@ export const getHabitsByUser = async (req: Request, res: Response) => {
 }
 
 export const createHabit = async (req: Request, res: Response) => {
-  const { user_id, name, color } = req.body
+  const { user_id, name, color, icon_url } = req.body;
 
-  if (!user_id || !name || !color) {
-    return res.status(400).json({ message: "Не все обязательные поля заполнены" })
+  if (!user_id || !name || !color || !icon_url) {
+    return res.status(400).json({ message: "Не все обязательные поля заполнены" });
   }
 
   try {
     await sequelize.transaction(async (t) => {
       // 1️⃣ Создаем привычку
-      const habit = await Habit.create(
-        { user_id, name },
-        { transaction: t }
-      )
+      const habit = await Habit.create({ user_id, name }, { transaction: t });
 
-      // 2️⃣ Создаем иконку
+      // 2️⃣ Создаем иконку с цветом и ссылкой
       const icon = await HabitIcon.create(
-        { habit_id: habit.id, url: "https://www.svgrepo.com/show/61821/gym-weight.svg", color },
+        {
+          habit_id: habit.id,
+          url: icon_url,
+          color,
+        },
         { transaction: t }
-      )
+      );
 
-      // 3️⃣ Создаем 93 пустых лога (последняя дата = сегодня, остальные идут на 1 день назад)
-      const logsData = []
-      const today = new Date()
+      // 3️⃣ Создаем 121 пустой лог
+      const logsData = [];
+      const today = new Date();
       for (let i = 121; i >= 0; i--) {
-        const date = new Date(today)
-        date.setDate(today.getDate() - i)
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
         logsData.push({
           habit_id: habit.id,
           date: date.toISOString().split("T")[0],
-          status: false
-        })
+          status: false,
+        });
       }
-      await HabitLog.bulkCreate(logsData, { transaction: t })
+      await HabitLog.bulkCreate(logsData, { transaction: t });
 
       res.json({
         id: habit.id,
         name: habit.name,
         icon,
-        weeks: [] // можно потом строить через функцию buildWeeks
-      })
-    })
+        weeks: [],
+      });
+    });
   } catch (err) {
-    console.error(err)
-    res.status(500).json({ message: "Ошибка сервера" })
+    console.error(err);
+    res.status(500).json({ message: "Ошибка сервера" });
   }
-}
+};
+
 
