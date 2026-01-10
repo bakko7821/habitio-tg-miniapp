@@ -1,9 +1,11 @@
-import { buttonColor, buttonTextColor, disableColor, hintColor, secondaryBgColor, textColor } from "../types/variables"
+import { buttonTextColor, disableColor, hintColor, secondaryBgColor, textColor } from "../types/variables"
 import type { Habit } from "../types/types"
-import { ArrowIcon} from "../assets/icons"
+import { ArrowIcon, EditIcon } from "../assets/icons"
 import { useEffect, useState } from "react"
+import { EditHabitModal } from "../components/Modal/EditHabitModal"
 
 export const HabitPage = () => {
+    const [isEditOpen, setIsEditOpen] = useState(false)
     const [habits, setHabits] = useState<Habit[]>([])
     const userId = 1
     useEffect(() => {
@@ -73,7 +75,7 @@ export const HabitPage = () => {
                             </button>
                         </div>
                         <div className={activeHabitId === habit.id ? "flex flex-col gap-2" : "hidden"}>
-                            <div className="w-full flex flex-col gap-1">
+                            <div className="relative w-full flex flex-col gap-1">
                                 {habit.weeks.map((week) => (
                                     <div 
                                         key={week.name}
@@ -86,22 +88,39 @@ export const HabitPage = () => {
                                             {toShortDay(week.name)}
                                         </p>
                                         <div className="overflow-hidden relative flex justify-end w-full flex gap-1">
-                                            <div className="absolute bg-black blur-lg h-full w-[8px] left-0"></div>
                                             {week.days.map((day) => (
                                                 <div 
                                                     key={day.date}
                                                     style={{ backgroundColor: day.status ? habit.icon.color : disableColor }}
                                                     className="shrink-0 w-[18px] h-[18px] rounded-md">
-
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                 ))}
                             </div>
-                            <button 
-                                style={{ backgroundColor: `${hintColor}5D`, color: buttonTextColor}}
-                                className="text-base font-medium leading-[1.5] w-full rounded-xl p-2">Выполнил</button>
+                            <div className="flex gap-2">
+                                <button 
+                                    style={{ backgroundColor: `${hintColor}5D`, color: buttonTextColor}}
+                                    className="text-base font-medium leading-[1.5] w-full rounded-xl p-2"
+                                >
+                                    Выполнил
+                                </button>
+                                <button 
+                                    onClick={() => setIsEditOpen(true)}
+                                    style={{backgroundColor: `${hintColor}5D`, color: buttonTextColor}}
+                                    className="rounded-xl p-2">
+                                    <EditIcon />
+                                </button>
+                                {isEditOpen && (
+                                    <EditHabitModal
+                                        habit={habit}
+                                        onClose={
+                                            () => setIsEditOpen(false)
+                                        }
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 ))

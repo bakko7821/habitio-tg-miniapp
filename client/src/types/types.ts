@@ -4,13 +4,18 @@ export interface HeaderProps {
 }
 
 export interface IconsModalProps {
-  onSelect: (iconUrl: string) => void;
-  onClose: () => void;
+    onSelect: (iconUrl: string) => void;
+    onClose: () => void;
 }
 
 export interface ColorsModalProps {
-  onSelect: (color: string) => void;
-  onClose: () => void;
+    onSelect: (color: string) => void;
+    onClose: () => void;
+}
+
+export interface EditHabitModalProps {
+    habit: Habit  
+    onClose: () => void;
 }
 
 // Habit interfaces
