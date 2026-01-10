@@ -1,4 +1,4 @@
-import { disableColor, hintColor, secondaryBgColor, textColor } from "../types/variables"
+import { buttonColor, buttonTextColor, disableColor, hintColor, secondaryBgColor, textColor } from "../types/variables"
 import type { Habit } from "../types/types"
 import { ArrowIcon} from "../assets/icons"
 import { useEffect, useState } from "react"
@@ -59,7 +59,7 @@ export const HabitPage = () => {
                                     <img 
                                         src={habit.icon.url} 
                                         alt="Icon" 
-                                        className="text-black w-[28px] h-[28px]"
+                                        className="text-black cdw-[28px] h-[28px]"
                                     />
                                 </div>
 
@@ -72,25 +72,26 @@ export const HabitPage = () => {
                                 <ArrowIcon />
                             </button>
                         </div>
-                        <div className={activeHabitId === habit.id ? "flex gap-2" : "hidden"}>
+                        <div className={activeHabitId === habit.id ? "flex flex-col gap-2" : "hidden"}>
                             <div className="w-full flex flex-col gap-1">
                                 {habit.weeks.map((week) => (
                                     <div 
                                         key={week.name}
-                                        className="flex items-center justify-start gap-2"
+                                        className="w-full overflow-hidden flex items-center justify-start gap-2"
                                     >
                                         <p 
                                             style={{ color: textColor, opacity: 0.6}}
-                                            className="w-[30px] font-sf text-xs font-regular leading-[1.5] uppercase"
+                                            className="w-[30px] shrink-0 font-sf text-xs font-regular leading-[1.5] uppercase"
                                         >
                                             {toShortDay(week.name)}
                                         </p>
-                                        <div className="flex gap-1">
+                                        <div className="overflow-hidden relative flex justify-end w-full flex gap-1">
+                                            <div className="absolute bg-black blur-lg h-full w-[8px] left-0"></div>
                                             {week.days.map((day) => (
                                                 <div 
                                                     key={day.date}
                                                     style={{ backgroundColor: day.status ? habit.icon.color : disableColor }}
-                                                    className="w-[18px] h-[18px] rounded-md">
+                                                    className="shrink-0 w-[18px] h-[18px] rounded-md">
 
                                                 </div>
                                             ))}
@@ -98,6 +99,9 @@ export const HabitPage = () => {
                                     </div>
                                 ))}
                             </div>
+                            <button 
+                                style={{ backgroundColor: `${hintColor}5D`, color: buttonTextColor}}
+                                className="text-base font-medium leading-[1.5] w-full rounded-xl p-2">Выполнил</button>
                         </div>
                     </div>
                 ))
