@@ -1,6 +1,8 @@
 import { Request, Response } from "express"
-import { Habit, HabitIcon, HabitLog } from "../models"
 import sequelize from "../config/database"
+import { Habit } from "../models/Habits/Habit"
+import { HabitIcon } from "../models/Habits/HabitIcon"
+import { HabitLog } from "../models/Habits/HabitLog"
 
 export const getHabitsByUser = async (req: Request, res: Response) => {
   const { user_id } = req.params

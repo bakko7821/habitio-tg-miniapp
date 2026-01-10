@@ -1,17 +1,12 @@
-import sequelize from '../config/database';
-import { Habit } from './Habits/Habit';
-import { HabitIcon } from './Habits/HabitIcon';
-import { HabitLog } from './Habits/HabitLog';
-import UserModel, { User } from './user.model';
+import sequelize from "../config/database"
 
-UserModel(sequelize);
+import { User } from "./User/User"
+import { Habit } from "./Habits/Habit"
+import { HabitIcon } from "./Habits/HabitIcon"
+import { HabitLog } from "./Habits/HabitLog"
+import { Todo } from "./Todo/Todo"
 
-const db = {
-  sequelize,
-  User,
-};
-
-export default db;
+/* ========= HABITS ========= */
 
 // Habit → Icon
 Habit.hasOne(HabitIcon, {
@@ -31,5 +26,29 @@ HabitLog.belongsTo(Habit, {
   foreignKey: "habit_id",
 })
 
-export { Habit, HabitIcon, HabitLog }
+/* ========= USER ========= */
 
+User.hasMany(Habit, {
+  foreignKey: "user_id",
+  as: "habits",
+})
+Habit.belongsTo(User, {
+  foreignKey: "user_id",
+})
+
+User.hasMany(Todo, {
+  foreignKey: "user_id",
+  as: "todos",
+})
+Todo.belongsTo(User, {
+  foreignKey: "user_id",
+})
+
+export default{
+  sequelize,
+  User,
+  Habit,
+  HabitIcon,
+  HabitLog,
+  Todo,
+}

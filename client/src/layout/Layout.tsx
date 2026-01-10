@@ -22,7 +22,7 @@ export const Layout = () => {
 
 
   return (
-    <div style={{ backgroundColor: bgColor, color: textColor, minHeight: '100vh' }} 
+    <div style={{ backgroundColor: bgColor, color: textColor, width: '100vw', minHeight: '100vh' }} 
         className="p-4 gap-4 flex flex-col items-center justify-between">
       <Header title={title} showHabitButton={showHabitButton}  />
 

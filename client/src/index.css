@@ -203,3 +203,14 @@ input, select {
 .modal .floating-input:has(select:not(:placeholder-shown)) {
   height: 64px;
 }
+
+.plug {
+  width: 100%;
+  height: 2px;
+}
+
+
+.addToDoButton svg {
+  width: 36px;
+  height: 36px;
+}

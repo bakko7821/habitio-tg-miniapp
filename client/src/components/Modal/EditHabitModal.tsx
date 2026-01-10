@@ -18,7 +18,7 @@ export const EditHabitModal = ({habit, onClose}: EditHabitModalProps) => {
         <div className="modal fixed inset-0 z-20 flex items-center justify-center">
             <div className="absolute inset-0 bg-white/10 backdrop-blur-xs" />
                 <div
-                    className="pickIconContent relative overflow-y-scroll z-10 w-[85vw] h-[60vh] rounded-2xl bg-white/10 backdrop-blur-xl border border-white/50 shadow-xl p-3 gap-3 flex flex-col"
+                    className="pickIconContent relative overflow-y-scroll z-10 w-[85vw] rounded-2xl bg-white/10 backdrop-blur-xl border border-white/50 shadow-xl p-3 gap-4 flex flex-col"
                 >
                     <div className="w-full flex items-center justify-between">
                         <p style={{ color: textColor }}
@@ -79,12 +79,12 @@ export const EditHabitModal = ({habit, onClose}: EditHabitModalProps) => {
                                 onChange={(e) => setHabitNotes(e.target.value)}/>
                             <label htmlFor="notes">Заметки</label>
                         </div>
+                    </div>
 
-                        <button 
+                    <button 
                             style={{ backgroundColor: buttonColor, color: buttonTextColor}}
                             className="text-base font-medium leading-[1.5] w-full rounded-xl p-3"
                         >Сохранить</button>
-                    </div>
                 </div>
         </div>
     )

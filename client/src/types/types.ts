@@ -18,6 +18,32 @@ export interface EditHabitModalProps {
     onClose: () => void;
 }
 
+export interface EditToDoTaskModalProps {
+    task: TodoTask;
+    onClose: () => void;
+}
+
+export interface CheckboxProps {
+    task: TodoTask;
+    checked: boolean;
+    onChange: (checked: boolean) => void;
+    disabled?: boolean;
+}
+
+// ToDo interfaces
+
+export interface TodoTask {
+  id: number
+  name: string
+  checked: boolean
+}
+
+export interface TodoDay {
+  date: string // ISO YYYY-MM-DD
+  tasks: TodoTask[]
+}
+
+
 // Habit interfaces
 
 export interface Habit {
