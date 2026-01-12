@@ -8,6 +8,11 @@ export interface IconsModalProps {
     onClose: () => void;
 }
 
+export interface ChangeDaySuccesModalProps {
+    day: HabitDay;
+    onClose: () => void;
+}
+
 export interface ColorsModalProps {
     onSelect: (color: string) => void;
     onClose: () => void;

@@ -6,7 +6,7 @@ import { iconsList } from "../../utils/icons.links"
 export const IconsModal = ({ onSelect, onClose }: IconsModalProps) => {
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center">
-        <div className="absolute inset-0 bg-white/10 backdrop-blur-xs" />
+        <div className="absolute inset-0 bg-white/10 backdrop-blur-xs" onClick={onClose}/>
             <div
                 className="pickIconContent relative overflow-y-scroll z-10 w-[85vw] h-[60vh] rounded-2xl bg-white/10 backdrop-blur-xl border border-white/50 shadow-xl p-3 gap-3 flex flex-col"
             >

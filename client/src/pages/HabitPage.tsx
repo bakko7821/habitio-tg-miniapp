@@ -1,11 +1,13 @@
 import { buttonTextColor, disableColor, hintColor, secondaryBgColor, textColor } from "../types/variables"
-import type { Habit } from "../types/types"
+import type { Habit, HabitDay } from "../types/types"
 import { ArrowIcon, EditIcon } from "../assets/icons"
 import { useEffect, useState } from "react"
 import { EditHabitModal } from "../components/Modal/EditHabitModal"
+import { ChangeDaySuccesModal } from "../components/Modal/ChangeDaySuccesModal"
 
 export const HabitPage = () => {
     const [isEditOpen, setIsEditOpen] = useState(false)
+    const [selectedDay, setSelectedDay] = useState<HabitDay | null>(null)
     const [habits, setHabits] = useState<Habit[]>([])
     const userId = 1
     useEffect(() => {
@@ -89,12 +91,14 @@ export const HabitPage = () => {
                                         </p>
                                         <div className="overflow-hidden relative flex justify-end w-full flex gap-1">
                                             {week.days.map((day) => (
-                                                <div 
-                                                    key={day.date}
-                                                    style={{ backgroundColor: day.status ? habit.icon.color : disableColor }}
-                                                    className="shrink-0 w-[18px] h-[18px] rounded-md">
-                                                </div>
+                                            <div
+                                                key={day.date}
+                                                onClick={() => setSelectedDay(day)}
+                                                style={{ backgroundColor: day.status ? habit.icon.color : disableColor }}
+                                                className="shrink-0 w-[18px] h-[18px] rounded-md"
+                                            />
                                             ))}
+
                                         </div>
                                     </div>
                                 ))}
@@ -120,6 +124,13 @@ export const HabitPage = () => {
                                         }
                                     />
                                 )}
+                                {selectedDay && (
+                                    <ChangeDaySuccesModal
+                                        day={selectedDay}
+                                        onClose={() => setSelectedDay(null)}
+                                    />
+                                )}
+
                             </div>
                         </div>
                     </div>
