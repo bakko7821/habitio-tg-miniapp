@@ -5,6 +5,7 @@ import { HabitPage } from "../pages/HabitPage"
 import { TodoPage } from "../pages/TodoPage"
 import { KanbanPage } from "../pages/KanbanPage"
 import { AuthPage } from "../pages/Auth/AuthPage"
+import dateToPath from "../utils/date"
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Navigate to="/habit" />} />
         <Route path="/habit" element={<HabitPage />} />
+        <Route path="/todo" element={<Navigate to={`/todo/${dateToPath()}`} />} />
         <Route path="/todo/:date" element={<TodoPage />} />
         <Route path="/kanban" element={<KanbanPage />} />
       </Route>

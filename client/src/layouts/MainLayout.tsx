@@ -1,21 +1,23 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Header } from "../components/Header";
 // import useAuthGuard from "../hooks/useAuthGuard";
 
-const titlesMap: Record<string, string> = {
-  "/habit": "Habits",
-  "/todo": "Todo",
-  "/kanban": "Kanban",
-  "/pomodoro": "Pomodoro",
-  "/chart": "Chart",
-  "/profile": "Profile",
-}
+const pathname = location.pathname
+
+const titleMap: Array<{ match: RegExp; title: string }> = [
+  { match: /^\/habit$/, title: "Habits" },
+  { match: /^\/todo(\/.*)?$/, title: "Todo" },
+  { match: /^\/kanban$/, title: "Kanban" },
+  { match: /^\/pomodoro$/, title: "Pomodoro" },
+  { match: /^\/chart$/, title: "Chart" },
+  { match: /^\/profile$/, title: "Profile" },
+]
+
+const title =
+  titleMap.find(item => item.match.test(pathname))?.title ?? ""
 
 export default function MainLayout() {
     // useAuthGuard()
-
-    const location = useLocation()
-    const title = titlesMap[location.pathname] ?? ""
     
     return (
         <>

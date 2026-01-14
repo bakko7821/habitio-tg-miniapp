@@ -1,7 +1,7 @@
 import { PlusIcon } from "../assets/icons"
 import { Habit } from "../components/UI/Habit"
-import type { HabitProps } from "../utils/types"
-import { secondTextColor } from "../utils/variables"
+import type { HabitProps } from "../utils/types/types"
+import { secondTextColor } from "../utils/types/variables"
 
 const HabitsList: HabitProps[] = [
     {name: 'Отжимания', color: '#FF0000', type: 'boolean'},

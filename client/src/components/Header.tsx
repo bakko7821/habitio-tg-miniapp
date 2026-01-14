@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BurgerMenuIcon } from "../assets/icons";
 import { NavigationMenu } from "./UI/NavigationMenu";
-import { textColor } from "../utils/variables.ts";
+import { textColor } from "../utils/types/variables.ts";
 
 interface HeaderProps {
     title: string;
