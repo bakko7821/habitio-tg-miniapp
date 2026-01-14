@@ -20,7 +20,7 @@ export default function MainLayout() {
     return (
         <>
             <Header title={title}/>
-            <main>
+            <main className="h-full w-full flex flex-col gap-2">
                 <Outlet />
             </main>
         </>
