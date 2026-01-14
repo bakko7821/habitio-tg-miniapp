@@ -1,5 +1,5 @@
 import { PlusIcon } from "../assets/icons"
-import { Habit } from "../components/UI/Habit"
+import { Habit } from "../components/UI/Habit/Habit"
 import type { HabitProps } from "../utils/types/types"
 import { secondTextColor } from "../utils/types/variables"
 

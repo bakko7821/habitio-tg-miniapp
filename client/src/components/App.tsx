@@ -15,7 +15,7 @@ export default function App() {
       </Route>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Navigate to="/habit" />} />
-        <Route path="/habit" element={<HabitPage />} />
+        <Route path="/habits" element={<HabitPage />} />
         <Route path="/todo" element={<Navigate to={`/todo/${dateToPath()}`} />} />
         <Route path="/todo/:date" element={<TodoPage />} />
         <Route path="/kanban" element={<KanbanPage />} />

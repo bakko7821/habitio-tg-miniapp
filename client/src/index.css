@@ -18,3 +18,8 @@
     width: 100vw;
     height: 100vh;
 }
+
+nav a {
+    color: #1a1a1a;
+    font-weight: 500;
+}

@@ -1,5 +1,5 @@
-import type { HabitProps } from "../../utils/types/types.ts"
-import { secondBgColor, textColor } from "../../utils/types/variables.ts"
+import type { HabitProps } from "../../../utils/types/types.ts"
+import { secondBgColor, textColor } from "../../../utils/types/variables.ts"
 
 interface HabitComponentProps {
     habit: HabitProps;

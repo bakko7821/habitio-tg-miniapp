@@ -11,7 +11,7 @@ export const Header = ({title}: HeaderProps) => {
     console.log(textColor)
     const [isNavigationOpen, setIsNavigationOpen] = useState(false)
     return (
-        <header className="w-full flex items-center justify-between p-4">
+        <header className="relative w-full flex items-center justify-between p-4">
             <p className="text-2xl font-semibold">{title}</p>
             <button onClick={
                 () => setIsNavigationOpen(true)
