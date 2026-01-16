@@ -4,9 +4,6 @@ import type { KanbanCardProps } from "../../../utils/types/kanban"
 import { secondBgColor } from "../../../utils/types/variables"
 import { KanbanTask } from "./KanbanTask"
 
-
-// 
-
 export const KanbanCard = ({title, tasks}: KanbanCardProps) => {
     const [cardIsOpen, setCardIsOpen] = useState(false)
     
@@ -21,17 +18,19 @@ export const KanbanCard = ({title, tasks}: KanbanCardProps) => {
                     <ArrowIcon />
                 </button>
             </div>
-            {!cardIsOpen ? (
+            {!cardIsOpen ? null 
+            : (
                 <div className="">
                     {tasks.map((task) => (
-                        <KanbanTask 
+                        <KanbanTask
+                            key={task.id} 
                             id={task.id} 
                             title={task.title} 
                             isDone={task.isDone}
                             tags={task.tags}/>
                     ))}
                 </div>
-            ) : null}
+            )}
         </div>
     )
 }

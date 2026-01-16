@@ -27,3 +27,22 @@ export const CrossIcon = ({width = 24, height = 24, color = '#1a1a1a'}: IconsPro
         <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M19 5L4.99998 19M5.00001 5L19 19" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
     )
 }
+
+export const MoreIcon = ({width = 24, height = 24, color = '#9c9c9c'}: IconsProps) => {
+    return (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> 
+                <circle cx="18" cy="12" r="1.5" transform="rotate(90 18 12)" fill={color}></circle> 
+                <circle cx="12" cy="12" r="1.5" transform="rotate(90 12 12)" fill={color}></circle> 
+                <circle cx="6" cy="12" r="1.5" transform="rotate(90 6 12)" fill={color}></circle> 
+            </g></svg>
+    )
+}
+
+export const TickIcon = ({width = 24, height = 24, color = '#1a1a1a'}: IconsProps) => {
+    return (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.89163 13.2687L9.16582 17.5427L18.7085 8" stroke={color} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    )
+}
