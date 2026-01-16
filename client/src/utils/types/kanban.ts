@@ -6,9 +6,9 @@ export interface KanbanCardProps {
 export interface KanbanTaskProps {
     id: number;
     title: string;
-    description: string;
+    description?: string;
     isDone: boolean;
-    tags: KanbanTaskTagsProps[];
+    tags?: KanbanTaskTagsProps[];
 }
 
 export interface KanbanTaskTagsProps {

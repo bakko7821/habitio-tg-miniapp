@@ -5,15 +5,15 @@ import { secondBgColor } from "../../../utils/types/variables"
 import { KanbanTask } from "./KanbanTask"
 
 
-// {title, tasks}: KanbanCardProps
+// 
 
-export const KanbanCard = () => {
+export const KanbanCard = ({title, tasks}: KanbanCardProps) => {
     const [cardIsOpen, setCardIsOpen] = useState(false)
     
     return (
         <div className="w-full flex flex-col gap-2">
             <div style={{backgroundColor: secondBgColor}} className="w-full flex items-center justify-between p-4">
-                <p className="">Today</p>
+                <p className="">{title}</p>
                 <button 
                     onClick={() => setCardIsOpen(prev => !prev)}
                     className={!cardIsOpen ? ("rotate-[270deg]") : ("rotate-[90deg]")}
@@ -23,7 +23,13 @@ export const KanbanCard = () => {
             </div>
             {!cardIsOpen ? (
                 <div className="">
-                    <KanbanTask />
+                    {tasks.map((task) => (
+                        <KanbanTask 
+                            id={task.id} 
+                            title={task.title} 
+                            isDone={task.isDone}
+                            tags={task.tags}/>
+                    ))}
                 </div>
             ) : null}
         </div>
