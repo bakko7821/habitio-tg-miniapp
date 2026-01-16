@@ -8,7 +8,6 @@ interface HeaderProps {
 }
 
 export const Header = ({title}: HeaderProps) => {
-    console.log(textColor)
     const [isNavigationOpen, setIsNavigationOpen] = useState(false)
     return (
         <header className="relative w-full flex items-center justify-between p-4">
