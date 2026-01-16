@@ -5,6 +5,15 @@
   --font-inter: "Inter", sans-serif;
 }
 
+@layer utilities {
+  .writing-vertical-rl {
+    writing-mode: vertical-rl;
+  }
+  .writing-vertical-lr {
+    writing-mode: vertical-lr;
+  }
+}
+
 * {
     font-family: "Inter", sans-serif;
 }
