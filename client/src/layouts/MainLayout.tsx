@@ -1,10 +1,10 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "../components/Header";
 import { useEffect, useState } from "react";
-// import useAuthGuard from "../hooks/useAuthGuard";
+import useAuthGuard from "../hooks/useAuthGuard";
 
 export default function MainLayout() {
-    // useAuthGuard()
+    useAuthGuard()
 
     const location = useLocation()
     const pathname = location.pathname

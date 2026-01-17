@@ -4,17 +4,25 @@ import MainLayout from "../layouts/MainLayout"
 import { HabitPage } from "../pages/HabitPage"
 import { TodoPage } from "../pages/TodoPage"
 import { KanbanPage } from "../pages/KanbanPage"
-import { AuthPage } from "../pages/Auth/AuthPage"
 import dateToPath from "../utils/date"
 import { EisenhowerMatrix } from "../pages/EisenhowerMatrixPage"
 import { InfoHabitPage } from "../pages/InfoHabitPage"
+import { RegisterForm } from "../pages/Auth/RegisterForm"
+import { RecoveryForm } from "../pages/Auth/RecoveryForm"
+import { LoginForm } from "../pages/Auth/LoginForm"
 
 export default function App() {
   return (
     <Routes>
-      <Route element={<AuthLayout />}>
-        <Route path="/auth/login" element={<AuthPage />} />
+      {/* AUTH */}
+      <Route path="/auth" element={<AuthLayout />}>
+        <Route index element={<Navigate to="login" replace />} />
+        <Route path="login" element={<LoginForm />} />
+        <Route path="register" element={<RegisterForm />} />
+        <Route path="recovery" element={<RecoveryForm />} />
       </Route>
+
+      {/* MAIN */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<Navigate to="/habits" />} />
         <Route path="/habits" element={<HabitPage />} />
@@ -24,6 +32,9 @@ export default function App() {
         <Route path="/kanban" element={<KanbanPage />} />
         <Route path="/matrix" element={<EisenhowerMatrix />} />
       </Route>
+
+      {/* 404 */}
+      <Route path="*" element={<Navigate to="/auth/login" replace />} />
     </Routes>
   )
 }
